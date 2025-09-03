@@ -78,7 +78,7 @@
         
         <header class="text-center mb-12">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Get Leads: Advanced Bulk Lead Outreach System</h1>
-            <p class="text-lg text-gray-500 mt-2">Prepared for High-Volume Lead Communication & Meta Integration | January 2025</p>
+            <p class="text-lg text-gray-500 mt-2">Prepared for High-Volume Lead Communication & Meta Integration | sep 03 2025</p>
         </header>
 
         <main>
@@ -614,13 +614,8 @@
 
         // Download Brochure Function
         function downloadBrochure() {
-            // Create a link element to trigger download
-            const link = document.createElement('a');
-            link.href = 'Brochure.pdf';
-            link.download = 'Get_Leads_Research_and_Features.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            // Open the Google Docs link in a new tab
+            window.open('https://docs.google.com/document/d/19w2G74M6aAOgdLemQg8woxUBueLsUERIWA3Xs2tYt3s/edit?usp=sharing', '_blank');
         }
 
         // Close popup when clicking outside
