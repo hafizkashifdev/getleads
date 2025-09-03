@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal: Get Leads - Advanced Bulk Lead Outreach & Communication System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Taupe & Sage -->
+    <!-- Application Structure Plan: The application is designed as a single-page, scrollable proposal to guide the client logically from their stated problem to our proposed solution and its benefits. The structure is: 1. Header: Clear title and date. 2. Client Goals: Reiterate their needs to show we've listened. 3. Proposed Solution: Introduce our system, "ConnectFlow", as the answer. 4. Key Features: Interactive cards that allow the client to explore specific features without being overwhelmed. This encourages engagement. 5. Visualized Benefits: A bar chart provides a quick, impactful summary of the value proposition. 6. Process Flow: A simple visual diagram made with HTML/CSS clarifies how the system works. 7. Call to Action: Clear next steps. This linear, story-telling approach is more persuasive and easier to digest than a fragmented report. -->
+    <!-- Visualization & Content Choices: 1. Client Goals (List): Goal is to inform and confirm understanding. A simple, clear list in styled cards is most effective. 2. Key Features (Interactive Cards): Goal is to organize and allow exploration. Cards are used to chunk information. Interaction (JS click to expand) lets users control the depth of information. This is better than a long wall of text. 3. Benefits (Bar Chart): Goal is to compare and persuade. A horizontal bar chart from Chart.js visualizes the projected improvements (e.g., efficiency, deliverability). It's more impactful than text alone. Tooltips provide specific data on hover. 4. Process Flow (HTML/CSS Diagram): Goal is to organize and explain a process. Using flexbox/grid to create a visual flow is a lightweight and effective way to show how Meta Leads integrates with the system without external graphics. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F5F2; /* Warm Neutral Background */
+            color: #3D405B;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease-in-out;
+        }
+        .card-header {
+            cursor: pointer;
+        }
+        .tag {
+            background-color: #E0E1DD; /* Sage accent */
+            color: #3D405B;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background-color: #81B29A; /* Primary Sage */
+            color: #FFFFFF;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #6A9C89;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            border: 2px solid #E0E1DD;
+            border-radius: 0.75rem;
+            background-color: #fff;
+            min-height: 100px;
+        }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #81B29A;
+            margin: 0 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Get Leads: Advanced Bulk Lead Outreach System</h1>
+            <p class="text-lg text-gray-500 mt-2">Prepared for High-Volume Lead Communication & Meta Integration | January 2025</p>
+        </header>
+
+        <main>
+            <!-- Section 1: Client Goal -->
+            <section id="goal" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8">Understanding Your Bulk Lead Communication Challenge</h2>
+                <div class="card p-8">
+                    <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                        We understand you need a system to efficiently call and message your bulk leads without getting flagged for spamming or needing to save lead numbers. Your core requirements are:
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-[#81B29A] rounded-full mt-2"></div>
+                                <p class="text-gray-700">Bulk calling and messaging to large lead volumes</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-[#81B29A] rounded-full mt-2"></div>
+                                <p class="text-gray-700">No-save lead management - use numbers without permanent storage</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-[#81B29A] rounded-full mt-2"></div>
+                                <p class="text-gray-700">Spam prevention and compliance protection</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-[#81B29A] rounded-full mt-2"></div>
+                                <p class="text-gray-700">Seamless Meta Leads CRM integration</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-[#81B29A] rounded-full mt-2"></div>
+                                <p class="text-gray-700">Automated lead routing and campaign management</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-2 h-2 bg-[#81B29A] rounded-full mt-2"></div>
+                                <p class="text-gray-700">Real-time communication tracking and analytics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Proposed Solution -->
+            <section id="solution" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-2">The Proposed Solution: <span class="text-[#81B29A]">Get Leads</span></h2>
+                <p class="text-center text-lg text-gray-600 mb-8 max-w-3xl mx-auto">Get Leads is a specialized bulk lead outreach system designed for high-volume communication without spam issues. It combines advanced calling capabilities, intelligent messaging, spam prevention technology, seamless Meta Leads integration, and comprehensive community management into one powerful solution.</p>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Feature 1 -->
+                    <div class="card p-6 feature-card" data-target="feature1">
+                        <div class="card-header flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Bulk Communication</h3>
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </div>
+                        <div id="feature1" class="feature-content mt-4 text-gray-600" style="display: none;">
+                            High-volume calling and messaging capabilities with predictive dialing, automated SMS campaigns, and voice message broadcasting to thousands of leads simultaneously. One-click calling to entire community segments.
+                        </div>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="card p-6 feature-card" data-target="feature2">
+                        <div class="card-header flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">No-Save Lead Management</h3>
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </div>
+                        <div id="feature2" class="feature-content mt-4 text-gray-600" style="display: none;">
+                           Campaign-centric approach using temporary lead lists imported via CSV. No permanent contact storage required - perfect for high-volume lead processing and campaign management.
+                        </div>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="card p-6 feature-card" data-target="feature3">
+                        <div class="card-header flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Spam Prevention</h3>
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </div>
+                        <div id="feature3" class="feature-content mt-4 text-gray-600" style="display: none;">
+                            Advanced spam prevention with SHAKEN/STIR caller verification, DNC list management, TCPA compliance automation, and reputation monitoring to protect your business from spam flags.
+                        </div>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="card p-6 feature-card" data-target="feature4">
+                        <div class="card-header flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Meta Integration</h3>
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </div>
+                        <div id="feature4" class="feature-content mt-4 text-gray-600" style="display: none;">
+                           Seamless Meta Leads CRM integration with real-time lead synchronization, automated campaign routing, and direct import from Facebook Lead Ads without manual CSV downloads.
+                        </div>
+                    </div>
+                    <!-- Feature 5 -->
+                    <div class="card p-6 feature-card" data-target="feature5">
+                        <div class="card-header flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">User Role Management</h3>
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </div>
+                        <div id="feature5" class="feature-content mt-4 text-gray-600" style="display: none;">
+                            Comprehensive role-based access control with CEO, Manager, Agent, and custom roles. Each role has specific permissions and access to different community segments and features.
+                        </div>
+                    </div>
+                    <!-- Feature 6 -->
+                    <div class="card p-6 feature-card" data-target="feature6">
+                        <div class="card-header flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Event Scheduling</h3>
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </div>
+                        <div id="feature6" class="feature-content mt-4 text-gray-600" style="display: none;">
+                            Advanced event scheduling with automated 15-minute reminder calls and messages. Auto-follow-up sequences after events end, ensuring maximum engagement and conversion.
+                        </div>
+                    </div>
+                    <!-- Feature 7 -->
+                    <div class="card p-6 feature-card" data-target="feature7">
+                        <div class="card-header flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Community Management</h3>
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </div>
+                        <div id="feature7" class="feature-content mt-4 text-gray-600" style="display: none;">
+                            Segment and manage your entire audience in one platform. Create targeted communities, track engagement, and manage paid subscriptions with automated access control.
+                        </div>
+                    </div>
+                    <!-- Feature 8 -->
+                    <div class="card p-6 feature-card" data-target="feature8">
+                        <div class="card-header flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Automated Workflows</h3>
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </div>
+                        <div id="feature8" class="feature-content mt-4 text-gray-600" style="display: none;">
+                            Smart automation for call reminders, follow-up sequences, and lead nurturing. Automated new call reminders after events end, ensuring continuous engagement.
+                        </div>
+                    </div>
+                </div>
+                 <p class="text-center text-sm text-gray-500 mt-4">Click on any feature to expand for more details.</p>
+            </section>
+
+             <!-- Section 3: Process Flow -->
+            <section id="process" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8">How Get Leads Works: Complete Bulk Lead Outreach Flow</h2>
+                <div class="flex flex-col md:flex-row items-center justify-center">
+                    <div class="flow-step flex-1"><strong>1. Lead Import & Community Setup</strong><br>Meta Leads automatically sync to Get Leads via direct integration. Set up user roles and community segments.</div>
+                    <div class="flow-arrow hidden md:flex">→</div>
+                    <div class="flow-arrow flex md:hidden my-2">↓</div>
+                    <div class="flow-step flex-1"><strong>2. Event Scheduling</strong><br>Schedule events and set up automated 15-minute reminder sequences for your community.</div>
+                    <div class="flow-arrow hidden md:flex">→</div>
+                    <div class="flow-arrow flex md:hidden my-2">↓</div>
+                    <div class="flow-step flex-1"><strong>3. Bulk Communication</strong><br>Execute high-volume calls and messages with spam prevention. One-click calling to entire segments.</div>
+                    <div class="flow-arrow hidden md:flex">→</div>
+                    <div class="flow-arrow flex md:hidden my-2">↓</div>
+                    <div class="flow-step flex-1"><strong>4. Automated Follow-up</strong><br>Auto-reminder calls after events end, lead nurturing sequences, and conversion tracking.</div>
+                </div>
+            </section>
+
+            <!-- Section 4: Competitive Analysis -->
+            <section id="competitive" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8">Why Get Leads vs. Zoho & Other Solutions?</h2>
+                <div class="card p-6 mb-8">
+                    <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">The Market Reality: Generic Solutions vs. Specialized Platforms</h3>
+                    <p class="text-gray-700 mb-4">
+                        While platforms like Zoho are attempting to add bulk communication features to their existing CRM systems, they're essentially trying to retrofit generic business tools for specialized lead outreach needs. This approach often results in:
+                    </p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>• <strong>Compromised functionality</strong> - Generic features that don't excel at bulk communication</li>
+                        <li>• <strong>Complex setup</strong> - Requiring extensive customization to work for high-volume outreach</li>
+                        <li>• <strong>Higher costs</strong> - Paying for features you don't need while missing specialized tools</li>
+                        <li>• <strong>Limited scalability</strong> - Not designed from the ground up for bulk lead management</li>
+                    </ul>
+                </div>
+                <div class="card p-8">
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- LeadFlow Pro -->
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold text-[#81B29A] mb-4">Get Leads</h3>
+                            <div class="space-y-3 text-left">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">Bulk communication specialist</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">No-save lead management</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">Advanced spam prevention</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">Predictive dialing & automation</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">SHAKEN/STIR compliance</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">Meta Leads native integration</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">User role management system</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">Event scheduling & reminders</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">Community management</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-green-500">✓</span>
+                                    <span class="text-sm">One-click calling to segments</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Zoho CRM -->
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold text-gray-600 mb-4">Zoho CRM</h3>
+                            <div class="space-y-3 text-left">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-yellow-500">~</span>
+                                    <span class="text-sm">Generic CRM features</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Contact-centric approach</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">No bulk communication tools</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Limited spam prevention</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Requires permanent contact storage</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-yellow-500">~</span>
+                                    <span class="text-sm">Complex Meta integration setup</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">No event scheduling features</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Limited community management</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">No automated reminder system</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Other Solutions -->
+                        <div class="text-center">
+                            <h3 class="text-2xl font-bold text-gray-600 mb-4">Other CRMs</h3>
+                            <div class="space-y-3 text-left">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Not bulk communication focused</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Contact-centric database approach</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">No spam prevention features</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Manual lead processing</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Requires permanent contact storage</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-red-500">✗</span>
+                                    <span class="text-sm">Limited or no Meta integration</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Detailed Features -->
+            <section id="detailed-features" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8">Complete Feature Breakdown</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div class="space-y-6">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">Bulk Communication Engine</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Predictive dialing</strong> for maximum agent productivity</li>
+                                <li>• <strong>Automated SMS campaigns</strong> with personalization</li>
+                                <li>• <strong>Voice message broadcasting</strong> to thousands simultaneously</li>
+                                <li>• <strong>Multi-channel campaigns</strong> (call + SMS + email)</li>
+                                <li>• <strong>One-click calling</strong> to entire community segments</li>
+                                <li>• Real-time campaign monitoring and adjustment</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">No-Save Lead Management</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Campaign-centric approach</strong> - no permanent storage required</li>
+                                <li>• <strong>CSV import/export</strong> for easy lead list management</li>
+                                <li>• <strong>Temporary lead lists</strong> for specific campaigns</li>
+                                <li>• <strong>Lead segmentation</strong> by source, status, and response</li>
+                                <li>• <strong>Campaign archiving</strong> and cleanup automation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column -->
+                    <div class="space-y-6">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">Spam Prevention & Compliance</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>SHAKEN/STIR verification</strong> for caller authentication</li>
+                                <li>• <strong>DNC list management</strong> and automatic compliance</li>
+                                <li>• <strong>TCPA compliance automation</strong> and monitoring</li>
+                                <li>• <strong>Reputation monitoring</strong> and protection</li>
+                                <li>• <strong>Caller ID branding</strong> with business verification</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">Meta Leads Integration</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Real-time lead synchronization</strong> from Facebook Lead Ads</li>
+                                <li>• <strong>Automated campaign routing</strong> based on lead source</li>
+                                <li>• <strong>Lead scoring and qualification</strong> automation</li>
+                                <li>• <strong>Response tracking</strong> and conversion analytics</li>
+                                <li>• <strong>ROI measurement</strong> and campaign optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Feature Sections -->
+                <div class="grid md:grid-cols-2 gap-8 mt-8">
+                    <!-- Left Column -->
+                    <div class="space-y-6">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">User Role Management</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>CEO Level Access</strong> - Full system control and analytics</li>
+                                <li>• <strong>Manager Role</strong> - Team oversight and campaign management</li>
+                                <li>• <strong>Agent Access</strong> - Lead calling and messaging capabilities</li>
+                                <li>• <strong>Custom Roles</strong> - Tailored permissions for specific needs</li>
+                                <li>• <strong>Role-based Community Access</strong> - Segmented audience management</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">Event Scheduling & Automation</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>15-minute reminder calls</strong> before scheduled events</li>
+                                <li>• <strong>Automated follow-up sequences</strong> after events end</li>
+                                <li>• <strong>Smart scheduling</strong> based on lead availability</li>
+                                <li>• <strong>Event-based community segmentation</strong></li>
+                                <li>• <strong>Automated new call reminders</strong> for continuous engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column -->
+                    <div class="space-y-6">
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">Community Management</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Audience segmentation</strong> by interests and behavior</li>
+                                <li>• <strong>Paid subscription management</strong> with automated access control</li>
+                                <li>• <strong>Community engagement tracking</strong> and analytics</li>
+                                <li>• <strong>Targeted messaging</strong> to specific community segments</li>
+                                <li>• <strong>Lead nurturing workflows</strong> for community growth</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card p-6">
+                            <h3 class="text-xl font-semibold mb-4 text-[#81B29A]">Advanced Automation</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Smart call routing</strong> based on lead preferences</li>
+                                <li>• <strong>Automated lead qualification</strong> and scoring</li>
+                                <li>• <strong>Dynamic campaign optimization</strong> based on performance</li>
+                                <li>• <strong>Intelligent follow-up timing</strong> for maximum conversion</li>
+                                <li>• <strong>Cross-channel campaign coordination</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Benefits -->
+            <section id="benefits" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8">Projected Impact on Your Lead Outreach</h2>
+                 <div class="card p-6">
+                    <div class="chart-container">
+                        <canvas id="benefitsChart"></canvas>
+                    </div>
+                 </div>
+            </section>
+
+            <!-- Section 7: Call to Action -->
+            <section id="next-steps" class="text-center">
+                <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Lead Outreach?</h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Let's discuss how Get Leads can streamline your bulk communication, eliminate spam issues, and maximize your Meta Leads conversion. Schedule a live demo to see how our specialized bulk outreach features, user role management, event scheduling, and community management can solve your unique challenges.</p>
+                <div class="space-y-4">
+                    <button class="btn-primary font-bold py-3 px-8 rounded-lg text-lg mr-4" onclick="showDemoPopup()">Schedule a Live Demo</button>
+                    <button class="bg-gray-600 text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-700 transition-colors" onclick="downloadBrochure()">Download Research & Features</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Demo Popup Modal -->
+    <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-md w-full p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-800">Schedule Live Demo</h3>
+                <button onclick="closeDemoPopup()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <p class="text-gray-600">Ready to see Get Leads in action? Contact us to schedule your personalized demo:</p>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="font-semibold text-gray-800">Email:</p>
+                    <a href="mailto:hafizkashifdev@gmail.com" class="text-[#81B29A] hover:underline">hafizkashifdev@gmail.com</a>
+                </div>
+                <p class="text-sm text-gray-500">We'll show you how Get Leads can transform your bulk lead outreach with our advanced features including user role management, event scheduling, and community management.</p>
+                <div class="flex space-x-3">
+                    <button onclick="closeDemoPopup()" class="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400 transition-colors">Close</button>
+                    <a href="mailto:hafizkashifdev@gmail.com?subject=Get Leads Demo Request&body=Hi, I'm interested in scheduling a live demo of Get Leads. Please let me know your availability." class="flex-1 bg-[#81B29A] text-white py-2 px-4 rounded hover:bg-[#6A9C89] transition-colors text-center">Send Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                const header = card.querySelector('.card-header');
+                const content = document.getElementById(card.dataset.target);
+                const arrow = header.querySelector('span');
+
+                header.addEventListener('click', () => {
+                    const isVisible = content.style.display === 'block';
+                    content.style.display = isVisible ? 'none' : 'block';
+                    arrow.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(180deg)';
+                });
+            });
+            
+            const ctx = document.getElementById('benefitsChart').getContext('2d');
+            const benefitsChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Lead Response Rate', 'Call Efficiency', 'Spam Prevention', 'Event Engagement', 'Community Management', 'Meta Integration'],
+                    datasets: [{
+                        label: 'Projected Improvement',
+                        data: [85, 90, 95, 92, 88, 88],
+                        backgroundColor: [
+                            'rgba(129, 178, 154, 0.6)',
+                            'rgba(129, 178, 154, 0.7)',
+                            'rgba(129, 178, 154, 0.8)',
+                            'rgba(129, 178, 154, 0.9)',
+                            'rgba(129, 178, 154, 0.5)',
+                            'rgba(129, 178, 154, 0.4)'
+                        ],
+                        borderColor: [
+                            'rgba(129, 178, 154, 1)',
+                            'rgba(129, 178, 154, 1)',
+                            'rgba(129, 178, 154, 1)',
+                            'rgba(129, 178, 154, 1)',
+                            'rgba(129, 178, 154, 1)',
+                            'rgba(129, 178, 154, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += `+${context.parsed.x}%`;
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Improvement (%)'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Demo Popup Functions
+        function showDemoPopup() {
+            document.getElementById('demoModal').classList.remove('hidden');
+        }
+
+        function closeDemoPopup() {
+            document.getElementById('demoModal').classList.add('hidden');
+        }
+
+        // Download Brochure Function
+        function downloadBrochure() {
+            // Create a link element to trigger download
+            const link = document.createElement('a');
+            link.href = 'Brochure.pdf';
+            link.download = 'Get_Leads_Research_and_Features.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('demoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDemoPopup();
+            }
+        });
+    </script>
+</body>
+</html>
